@@ -1,117 +1,121 @@
-# Question-Answering-System-using-RAG
+# 📄 Document Question Answering System
 
-## About The Project
+A **Retrieval-Augmented Generation (RAG)** based application that allows users to ask questions about PDF documents and receive answers based on their content.
 
+The application uses **Streamlit** for the interface, **LangChain** for the RAG pipeline, **FAISS** for vector storage, **Google Generative AI** for embeddings, and **Llama 3 8B through Groq** for answer generation.
 
-The Document Question Answering System is a sophisticated tool designed to streamline information retrieval from vast document collections. Built on a foundation of advanced natural language processing techniques, the system features a user-friendly interface powered by Streamlit. Leveraging the LangChain framework and Google Generative AI, it ingests documents, converts them into vector embeddings, and employs the Retrieval augmentation generation(RAG) architecture for accurate question answering. Users can input queries through the intuitive interface, with the system retrieving precise answers based on the document context. With its efficiency, accuracy, and scalability, the system finds applications in research, knowledge management, education, and customer support, representing a significant advancement in information access technology.
+## 🚀 Features
 
-## Library Requirements
+* 📑 Load PDF documents from the `Artifacts` folder
+* ✂️ Split documents into smaller chunks
+* 🔢 Generate embeddings using Google Generative AI
+* 🔎 Retrieve relevant document content using FAISS
+* 🤖 Generate context-based answers using Llama 3
+* 🖥️ Interactive Streamlit interface
+* ⏱️ Display response time
 
- - faiss-cpu
- - langchain-groq
- - PyPDF2
- - langchain_google_genai
- - langchain
- - streamlit
- - python-dotenv
+## 🏗️ How It Works
 
-## Getting Started
+```text
+PDF Documents
+      ↓
+PDF Loader
+      ↓
+Text Chunking
+      ↓
+Google AI Embeddings
+      ↓
+FAISS Vector Store
+      ↓
+User Question
+      ↓
+Document Retrieval
+      ↓
+Llama 3 + Retrieved Context
+      ↓
+Final Answer
+```
 
-This will help you understand how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+The documents are split using a **chunk size of 1000** with an **overlap of 200** before being converted into embeddings and stored in FAISS.
 
-## Installation Steps
+## 🛠️ Tech Stack
 
-### Option 1: Installation from GitHub
+* **Python**
+* **Streamlit**
+* **LangChain**
+* **Groq**
+* **Llama 3 8B**
+* **Google Generative AI Embeddings**
+* **FAISS**
+* **PyPDFDirectoryLoader**
 
-Follow these steps to install and set up the project directly from the GitHub repository:
+## 📂 Project Structure
 
-1. **Clone the Repository**
-   - Open your terminal or command prompt.
-   - Navigate to the directory where you want to install the project.
-   - Run the following command to clone the GitHub repository:
-     ```
-     git clone https://github.com/KalyanMurapaka45/Question-Answering-System-using-RAG.git
-     ```
+```text
+Question-Answering-System/
+│
+├── Artifacts/
+│   └── *.pdf
+│
+├── app.py
+├── requirements.txt
+├── .env
+└── README.md
+```
 
-2. **Create a Virtual Environment** (Optional but recommended)
-   - It's a good practice to create a virtual environment to manage project dependencies. Run the following command:
-     ```
-     conda create -p <Environment_Name> python==<python version> -y
-     ```
+## ⚙️ Installation
 
-3. **Activate the Virtual Environment** (Optional)
-   - Activate the virtual environment based on your operating system:
-       ```
-       conda activate <Environment_Name>/
-       ```
+### 1. Clone the repository
 
-4. **Install Dependencies**
-   - Navigate to the project directory:
-     ```
-     cd [project_directory]
-     ```
-   - Run the following command to install project dependencies:
-     ```
-     pip install -r requirements.txt
-     ```
+```bash
+git clone https://github.com/taranghirapara77-commits/Question-Answering-System.git
+cd Question-Answering-System
+```
 
-5. **Run the Project**
-   - Start the project by running the appropriate command.
-     ```
-     streamlit run app.py
-     ```
+### 2. Install dependencies
 
-6. **Access the Project**
-   - Open a web browser or the appropriate client to access the project.
+```bash
+pip install -r requirements.txt
+```
 
+### 3. Configure API Keys
 
-## API Key Setup
+Create a `.env` file:
 
-To use this project, you need an API key from Google Gemini Large Language Model and Groq. Follow these steps to obtain and set up your API key:
+```env
+API_KEY=your_groq_api_key
+GOOGLE_API_KEY=your_google_api_key
+```
 
-1. **Get API Key:**
-   - Visit the Provided Links [Groq API](https://console.groq.com/keys) and [Google API](https://aistudio.google.com/app/apikey).
-   - Follow the instructions to create an account and obtain your API key.
+### 4. Add Documents
 
-2. **Set Up API Key:**
-   - Create a file named `.env` in the project root.
-   - Add your API key to the `.env` file:
-     ```dotenv
-     API_KEY=your_api_key_here
-     ```
+Place your PDF files inside the `Artifacts` folder.
 
-   **Note:** Keep your API key confidential. Do not share it publicly or expose it in your code.<br>
+### 5. Run the application
 
+```bash
+streamlit run app.py
+```
 
-## Contributing
+## 💡 Usage
 
-Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+1. Add your PDF documents to the `Artifacts` folder.
+2. Run the application.
+3. Click **"Ingest the Data into Vector Store"**.
+4. Enter a question related to your documents.
+5. The system retrieves relevant information and generates an answer.
 
-• **Report bugs**: If you encounter any bugs, please let us know. Open up an issue and let us know the problem.
+## 🔮 Future Improvements
 
-• **Contribute code**: If you are a developer and want to contribute, follow the instructions below to get started!
+* Support direct PDF uploads
+* Persistent vector database
+* Chat history and conversational memory
+* Source/page references for answers
+* Support for additional document formats
+* RAG evaluation and performance metrics
 
-1. Fork the Project
-2. Create your Feature Branch
-3. Commit your Changes
-4. Push to the Branch
-5. Open a Pull Request
+## 👨‍💻 Author
 
-• **Suggestions**: If you don't want to code but have some awesome ideas, open up an issue explaining some updates or improvements you would like to see!
+**Tarang Hirapara**
 
-#### Don't forget to give the project a star! Thanks again!
-
-## License
-
-This project is licensed under the [Open Source Initiative (OSI)](https://opensource.org/) approved GNU General Public License v3.0 License - see the [LICENSE.txt](LICENSE.txt) file for details.<br>
-
-
-## Contact Details
-
-Hema Kalyan Murapaka - [kalyanmurapaka274@gmail.com](kalyanmurapaka274@gmail.com)<br>
-
-
-## Acknowledgements
-
-We'd like to extend our gratitude to all individuals and organizations who have played a role in the development and success of this project. Your support, whether through contributions, inspiration, or encouragement, has been invaluable. Thank you for being a part of our journey.
+[GitHub](https://github.com/taranghirapara77-commits)
